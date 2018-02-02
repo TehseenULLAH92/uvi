@@ -20,6 +20,7 @@ class DriversController extends Controller
   }
   public function add_new_driver(Request $request){
     $data['name']           = $request->input('name');
+    $data['license']        = $request->input('license');
     $data['email']          = $request->input('email');
     $data['phonenumber']    = $request->input('phonenumber');
     $data['address']        = $request->input('address');
@@ -45,6 +46,7 @@ class DriversController extends Controller
   public function update(Request $request,$driver_id){
     $driver = Drivers::find($driver_id);
     $driver->name = $request->input('name');
+    $driver->license = $request->input('license');
     $driver->email = $request->input('email');
     $driver->phonenumber = $request->input('phonenumber');
     $driver->address = $request->input('address');

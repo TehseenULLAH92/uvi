@@ -50,7 +50,6 @@ class UserController extends Controller
     }
     public function add_user_to_company_view($id){
       $company = Companies::find($id);
-      //echo "<pre>";print_r($company);die;
       $companies = DB::table('companies')
       ->select('*')
       ->where('companies.id',$id)

@@ -42,36 +42,26 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Submitted By</th>
+                    <th>License</th>
                     <th>Severity</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Island Paradise Wheels</td>
-                    <td>Low</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Island Paradise Wheels</td>
-                    <td>Low</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Island Paradise Wheels</td>
-                    <td>Low</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Island Paradise Wheels</td>
-                    <td>Low</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>Island Paradise Wheels</td>
-                    <td>Low</td>
-                  </tr>
+                  <?php foreach ($latest_reports as $key => $single_report): ?>
+                    <tr>
+                      <td>{{$single_report->name}}</td>
+                      <td>{{$single_report->license}}</td>
+                      <td>{{$single_report->severity}}</td>
+                    </tr>
+                  <?php endforeach; ?>
+                  <?php foreach ($latest_creports as $key => $single_report): ?>
+                    <tr>
+                      <td>{{$single_report->name}}</td>
+                      <td>{{$single_report->license}}</td>
+                      <td>{{$single_report->severity}}</td>
+                    </tr>
+                  <?php endforeach; ?>
+
                 </tbody>
               </table>
             </div>
@@ -84,27 +74,19 @@
             </div>
             <div class="panel-body">
               <table class="table tab">
+                <thead>
+                  <tr>
+                      <td>Name</td>
+                      <td>Total</td>
+                  </tr>
+                </thead>
                 <tbody>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>2</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>1</td>
-                  </tr>
-                  <tr>
-                    <td>John Doe</td>
-                    <td>1</td>
-                  </tr>
+                  <?php foreach ($driver_most_report_registered as $key => $single_report): ?>
+                    <tr>
+                      <td>{{$single_report->name}}</td>
+                      <td>{{$single_report->id}}</td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -129,37 +111,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Island Paradise Wheels</td>
-                    <td>Monthly</td>
-                    <td>20</td>
-                    <td>20 Nov 2017</td>
-                  </tr>
-                  <tr>
-                    <td>Island Paradise Wheels</td>
-                    <td>Monthly</td>
-                    <td>20</td>
-                    <td>20 Nov 2017</td>
-                  </tr>
-                  <tr>
-                    <td>Island Paradise Wheels</td>
-                    <td>Monthly</td>
-                    <td>20</td>
-                    <td>20 Nov 2017</td>
-                  </tr>
-                  <tr>
-                    <td>Island Paradise Wheels</td>
-                    <td>Monthly</td>
-                    <td>20</td>
-                    <td>20 Nov 2017</td>
-                  </tr>
-                  <tr>
-                    <td>Island Paradise Wheels</td>
-                    <td>Monthly</td>
-                    <td>20</td>
-                    <td>20 Nov 2017</td>
-                  </tr>
-
+                  <?php foreach ($expiring_memberships as $key => $expiring_membership): ?>
+                    <tr>
+                      <td><?=$expiring_membership->name?></td>
+                      <td><?=$expiring_membership->membership?></td>
+                      <td><?=date("j F Y",strtotime($expiring_membership->startdate))?></td>
+                      <td><?=date("j F Y",strtotime($expiring_membership->enddate))?></td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -168,31 +127,23 @@
         <div class="col-xs-4">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h4>Companies  with most reports regostered</h4>
+              <h4>Companies  with most reports registered</h4>
             </div>
             <div class="panel-body">
               <table class="table tab">
-                <tbody>
+                <thead>
                   <tr>
-                    <td>Yummy Tracks</td>
-                    <td>20</td>
+                      <td>Name</td>
+                      <td>Total</td>
                   </tr>
-                  <tr>
-                    <td>Cars for hire</td>
-                    <td>18</td>
-                  </tr>
-                  <tr>
-                    <td>Total Independance</td>
-                    <td>15</td>
-                  </tr>
-                  <tr>
-                    <td>All state care rental</td>
-                    <td>12</td>
-                  </tr>
-                  <tr>
-                    <td>Cheaper than rice cars</td>
-                    <td>8</td>
-                  </tr>
+                </thead>
+                  <tbody>
+                  <?php foreach ($companies_most_report_registered as $key => $single_report): ?>
+                    <tr>
+                      <td>{{$single_report->name}}</td>
+                      <td>{{$single_report->id}}</td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

@@ -27,6 +27,7 @@ class CompaniesController extends Controller
   public function add_new_companies(Request $request){
 
     $data['type']         = $request->input('type');
+    $data['license']      = $request->input('license');
     $data['phonenumber']  = $request->input('phonenumber');
     $data['name']         = $request->input('name');
     $data['email']        = $request->input('email');
@@ -69,6 +70,7 @@ class CompaniesController extends Controller
 
     $companies = Companies::find($companies_id);
     $companies->type        = $request->input('type');
+    $companies->license     = $request->input('license');
     $companies->phonenumber = $request->input('phonenumber');
     $companies->name        = $request->input('name');
     $companies->email       = $request->input('email');

@@ -15,7 +15,7 @@
     <div class="container">
       <h1>List All Drivers</h1>
       @include('flash::message')
-      
+
       <div class="row">
         <div class="col-md-12">
           <div class="panel panel-sky">
@@ -39,7 +39,7 @@
                       <td><?=$driver->phonenumber?></td>
                       <td><?=$driver->address?></td>
                       <td><?=$driver->joiningdate?></td>
-                      <td><a href="{{  url('incompanies/drivers/edit/'.$driver->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('incompanies/drivers/delete/'.$driver->id) }}">Delete</a></td>
+                      <td><a href="{{  url('incompanies/drivers/edit/'.$driver->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a href="{{  url('incompanies/reports/add_report/'.$driver->id) }}">Add Report</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('incompanies/drivers/delete/'.$driver->id) }}">Delete</a></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

@@ -11,97 +11,116 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'Admin\AdminController@index');
 
 Auth::routes();
 // Administration LEVEL 1
 Route::group(['prefix' => 'admin'], function () {
-  Route::get('dashboard', 'admin\AdminController@index');
+  Route::get('dashboard', 'Admin\AdminController@index');
   //Route::get('dashboard', 'admin\DashboardController@index');
-  Route::get('dashboard', 'admin\DashboardController@index');
-  Route::get('companies', 'admin\CompaniesController@index');
-  Route::get('companies/add', 'admin\CompaniesController@add');
-  Route::get('companies/edit/{company_id}', 'admin\CompaniesController@edit');
-  Route::get('companies/profile/{company_id}', 'admin\CompaniesController@company_profile');
-  Route::get('companies/delete/{company_id}', 'admin\CompaniesController@delete');
-  Route::get('users', 'admin\UserController@index');
-  Route::get('users/add', 'admin\UserController@add');
-  Route::get('users/delete/{driver_id}', 'admin\UserController@delete');
-  Route::get('/drivers', 'admin\DriversController@index');
-  Route::get('drivers/add', 'admin\DriversController@add');
-  Route::get('drivers/edit/{driver_id}', 'admin\DriversController@edit');
-  Route::get('drivers/delete/{driver_id}', 'admin\DriversController@delete');
-  Route::get('submissions', 'admin\SubmissionsController@index');
-  Route::get('account', 'admin\UserController@account');
-  Route::get('profile', 'admin\UserController@profile');
-  Route::get('users/add_user/{id}', 'admin\UserController@add_user_to_company_view');
+  Route::get('dashboard', 'Admin\DashboardController@index');
+  Route::get('companies', 'Admin\CompaniesController@index');
+  Route::get('companies/add', 'Admin\CompaniesController@add');
+  Route::get('companies/edit/{company_id}', 'Admin\CompaniesController@edit');
+  Route::get('companies/profile/{company_id}', 'Admin\CompaniesController@company_profile');
+  Route::get('companies/delete/{company_id}', 'Admin\CompaniesController@delete');
+  Route::get('users', 'Admin\UserController@index');
+  Route::get('users/add', 'Admin\UserController@add');
+  Route::get('users/delete/{driver_id}', 'Admin\UserController@delete');
+  Route::get('/drivers', 'Admin\DriversController@index');
+  Route::get('drivers/add', 'Admin\DriversController@add');
+  Route::get('drivers/edit/{driver_id}', 'Admin\DriversController@edit');
+  Route::get('drivers/delete/{driver_id}', 'Admin\DriversController@delete');
+  Route::get('submissions', 'Admin\SubmissionsController@index');
+  Route::get('account', 'Admin\UserController@account');
+  Route::get('profile', 'Admin\UserController@profile');
+  Route::get('users/add_user/{id}', 'Admin\UserController@add_user_to_company_view');
+  Route::get('reports/drivers', 'Admin\ReportController@index');
+  Route::get('reports/companies', 'Admin\ReportController@cindex');
+  // Route::get('reports/add', 'Admin\ReportController@add');
+  Route::get('reports/add_report/{id}', 'Admin\ReportController@add_new_report_view');
+  Route::get('reports/add_creport/{id}', 'Admin\ReportController@add_new_creport_view');
 
   // post data
-  Route::post('add_new_companies', 'admin\CompaniesController@add_new_companies');
-  Route::post('companies/update/{company_id}', 'admin\CompaniesController@update');
-  Route::post('add_new_user', 'admin\UserController@add_new_user');
-  Route::post('add_new_driver', 'admin\DriversController@add_new_driver');
-  Route::post('drivers/update/{driver_id}', 'admin\DriversController@update');
-  Route::post('updatePassword', 'admin\UserController@updatePassword');
-  Route::post('updateProfile', 'admin\UserController@updateProfile');
-  Route::post('users/add_user_to_company/{id}', 'admin\UserController@add_user_to_company');
+  Route::post('add_new_companies', 'Admin\CompaniesController@add_new_companies');
+  Route::post('companies/update/{company_id}', 'Admin\CompaniesController@update');
+  Route::post('add_new_user', 'Admin\UserController@add_new_user');
+  Route::post('add_new_driver', 'Admin\DriversController@add_new_driver');
+  Route::post('drivers/update/{driver_id}', 'Admin\DriversController@update');
+  Route::post('updatePassword', 'Admin\UserController@updatePassword');
+  Route::post('updateProfile', 'Admin\UserController@updateProfile');
+  Route::post('users/add_user_to_company/{id}', 'Admin\UserController@add_user_to_company');
+  //Route::post('add_new_report', 'Admin\ReportController@add_new_report');
+  Route::post('reports/add_new_report/{id}', 'Admin\ReportController@add_new_report_id');
+  Route::post('reports/add_new_creport/{id}', 'Admin\ReportController@add_new_creport_id');
 
 });
 // Car Rental Companies LEVEL 2A
 Route::group(['prefix' => 'crcompanies'], function () {
-  Route::get('dashboard', 'cr\CrController@index');
-  Route::get('users', 'cr\UserController@index');
-  Route::get('users/add', 'cr\UserController@add');
-  Route::get('drivers/add', 'cr\DriversController@add');
-  Route::get('drivers/edit/{driver_id}', 'cr\DriversController@edit');
-  Route::get('drivers/delete/{driver_id}', 'cr\DriversController@delete');
-  Route::get('/drivers', 'cr\DriversController@index');
-  Route::get('/reports', 'cr\ReportsController@index');
-  Route::get('account', 'cr\UserController@account');
-  Route::get('profile', 'cr\UserController@profile');
+  Route::get('dashboard', 'Cr\CrController@index');
+  Route::get('users', 'Cr\UserController@index');
+  Route::get('users/add', 'Cr\UserController@add');
+  Route::get('drivers/add', 'Cr\DriversController@add');
+  Route::get('drivers/edit/{driver_id}', 'Cr\DriversController@edit');
+  Route::get('drivers/delete/{driver_id}', 'Cr\DriversController@delete');
+  Route::get('/drivers', 'Cr\DriversController@index');
+  Route::get('/reports', 'Cr\ReportsController@index');
+  Route::get('account', 'Cr\UserController@account');
+  Route::get('profile', 'Cr\UserController@profile');
+  Route::get('reports', 'Cr\ReportController@index');
+  // Route::get('reports/add', 'Cr\ReportController@add');
+  Route::get('reports/add_report/{id}', 'Cr\ReportController@add_new_report_view');
 
-  Route::post('add_new_driver', 'cr\DriversController@add_new_driver');
-  Route::post('drivers/update/{driver_id}', 'cr\DriversController@update');
-  Route::post('add_new_user', 'cr\UserController@add_new_user');
-  Route::post('updatePassword', 'cr\UserController@updatePassword');
-  Route::post('updateProfile', 'cr\UserController@updateProfile');
+  Route::post('add_new_driver', 'Cr\DriversController@add_new_driver');
+  Route::post('drivers/update/{driver_id}', 'Cr\DriversController@update');
+  Route::post('add_new_user', 'Cr\UserController@add_new_user');
+  Route::post('updatePassword', 'Cr\UserController@updatePassword');
+  Route::post('updateProfile', 'Cr\UserController@updateProfile');
+  //Route::post('add_new_report', 'Cr\ReportController@add_new_report');
+  Route::post('reports/add_new_report/{id}', 'Cr\ReportController@add_new_report_id');
 });
 // Insurance Companies LEVEL 2B
 Route::group(['prefix' => 'incompanies'], function () {
-  Route::get('/', 'in\InController@index');
-  Route::get('dashboard', 'in\InController@index');
-  Route::get('/drivers', 'in\DriversController@index');
-  Route::get('drivers/add', 'in\DriversController@add');
-  Route::get('drivers/edit/{driver_id}', 'in\DriversController@edit');
-  Route::get('drivers/delete/{driver_id}', 'in\DriversController@delete');
-  Route::get('reports', 'in\ReportsController@index');
-  Route::get('account', 'in\InController@account');
-  Route::get('profile', 'in\InController@profile');
+  Route::get('/', 'In\InController@index');
+  Route::get('dashboard', 'In\InController@index');
+  Route::get('/drivers', 'In\DriversController@index');
+  Route::get('drivers/add', 'In\DriversController@add');
+  Route::get('drivers/edit/{driver_id}', 'In\DriversController@edit');
+  Route::get('drivers/delete/{driver_id}', 'In\DriversController@delete');
+  Route::get('reports', 'In\ReportsController@index');
+  Route::get('account', 'In\InController@account');
+  Route::get('profile', 'In\InController@profile');
+  Route::get('reports', 'In\ReportController@index');
+  // Route::get('reports/add', 'In\ReportController@add');
+  Route::get('reports/add_report/{id}', 'In\ReportController@add_new_report_view');
 
   //post data
-  Route::post('add_new_driver', 'in\DriversController@add_new_driver');
-  Route::post('drivers/update/{driver_id}', 'in\DriversController@update');
-  Route::post('updatePassword', 'in\InController@updatePassword');
-  Route::post('updateProfile', 'in\InController@updateProfile');
+  Route::post('add_new_driver', 'In\DriversController@add_new_driver');
+  Route::post('drivers/update/{driver_id}', 'In\DriversController@update');
+  Route::post('updatePassword', 'In\InController@updatePassword');
+  Route::post('updateProfile', 'In\InController@updateProfile');
+  //Route::post('add_new_report', 'In\ReportController@add_new_report');
+  Route::post('reports/add_new_report/{id}', 'In\ReportController@add_new_report_id');
 });
 
 // Car Rental Employees LEVEL 3
 Route::group(['prefix' => 'cremployees'], function () {
-  Route::get('/dashboard', 'cre\CreController@index');
-  Route::get('reports', 'cre\ReportsController@index');
-  Route::get('account', 'cre\CreController@account');
-  Route::get('profile', 'cre\CreController@profile');
-  Route::get('/drivers', 'cre\DriversController@index');
-  Route::get('drivers/add', 'cre\DriversController@add');
-  Route::get('drivers/edit/{driver_id}', 'cre\DriversController@edit');
-  Route::get('drivers/view/{driver_id}', 'cre\DriversController@view');
-  Route::get('drivers/delete/{driver_id}', 'cre\DriversController@delete');
+  Route::get('/dashboard', 'Cre\CreController@index');
+  Route::get('reports', 'Cre\ReportsController@index');
+  Route::get('account', 'Cre\CreController@account');
+  Route::get('profile', 'Cre\CreController@profile');
+  Route::get('/drivers', 'Cre\DriversController@index');
+  Route::get('drivers/add', 'Cre\DriversController@add');
+  Route::get('drivers/edit/{driver_id}', 'Cre\DriversController@edit');
+  Route::get('drivers/view/{driver_id}', 'Cre\DriversController@view');
+  Route::get('drivers/delete/{driver_id}', 'Cre\DriversController@delete');
 
-  Route::post('add_new_driver', 'cre\DriversController@add_new_driver');
-  Route::post('drivers/update/{driver_id}', 'cre\DriversController@update');
-  Route::post('updatePassword', 'cre\CreController@updatePassword');
-  Route::post('updateProfile', 'cre\CreController@updateProfile');
+  Route::post('add_new_driver', 'Cre\DriversController@add_new_driver');
+  Route::post('drivers/update/{driver_id}', 'Cre\DriversController@update');
+  Route::post('updatePassword', 'Cre\CreController@updatePassword');
+  Route::post('updateProfile', 'Cre\CreController@updateProfile');
 
 });

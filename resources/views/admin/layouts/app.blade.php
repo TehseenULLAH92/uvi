@@ -81,11 +81,10 @@
                 <li><a href="{{url('admin/users')}}"> <span>Users</span></a></li>
                 <li><a href="{{url('admin/drivers')}}"> <span>Drivers</span></a></li>
                 <li><a href="{{url('admin/submissions')}}"> <span>Submissions</span></a></li>
-                <li><a href="javascript:;"> <span>Reports</span> </a>
+                <li><a href="javascript();"> <span>Reports</span> </a>
                   <ul class="acc-menu">
-                      <li><a href="#"><span>Driver Reports</span></a></li>
-                      <li><a href="#"><span>Users Reports</span></a></li>
-                      <li><a href="#"><span>Company Reports</span></a></li>
+                      <li><a href="{{url('admin/reports/drivers')}}"><span>Drivers</span></a></li>
+                      <li><a href="{{url('admin/reports/companies')}}"><span>Companies</span></a></li>
                   </ul>
                 </li>
               <?php endif; ?>
@@ -93,20 +92,20 @@
               <?php if (Auth::user()->role == "incompanies"): ?>
                 <li><a href="{{url('incompanies/dashboard')}}"> <span>Home</span></a></li>
                 <li><a href="{{url('incompanies/drivers')}}"> <span>Drivers</span></a></li>
-                <li><a href="{{url('incompanies/reports')}}"> <span>Reports</span></a></li>
+                <li><a href="{{url('admin/reports')}}"> <span>Reports</span> </a></li>
               <?php endif; ?>
               <!-- Car Rental Companies LEVEL 2A -->
               <?php if (Auth::user()->role == "crcompanies"): ?>
                 <li><a href="{{url('crcompanies/dashboard')}}"> <span>Home</span></a></li>
                 <li><a class=""href="{{url('crcompanies/users')}}"> <span>Users</span></a></li>
                 <li><a class="" href="{{url('crcompanies/drivers')}}"> <span>Drivers</span></a></li>
-                <li><a class="" href="{{url('crcompanies/reports')}}"> <span>Reports</span></a></li>
+                <li><a href="{{url('admin/reports')}}"> <span>Reports</span> </a></li>
               <?php endif; ?>
               <!-- Car Rental Employees LEVEL 3 -->
               <?php if (Auth::user()->role == "cremployees"): ?>
                 <li><a href="{{url('cremployees/dashboard')}}"> <span>Home</span></a></li>
                 <li><a class="" href="{{url('cremployees/drivers')}}"> <span>Drivers</span></a></li>
-                <li><a href="{{url('cremployees/reports')}}"> <span>Reports</span></a></li>
+                <li><a href="{{url('admin/reports')}}"> <span>Reports</span> </a></li>
               <?php endif; ?>
             </ul>
           </nav>
