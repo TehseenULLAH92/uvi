@@ -80,11 +80,16 @@
                 <li><a href="{{url('admin/companies')}}"> <span>Companies</span></a></li>
                 <li><a href="{{url('admin/users')}}"> <span>Users</span></a></li>
                 <li><a href="{{url('admin/drivers')}}"> <span>Drivers</span></a></li>
-                <li><a href="{{url('admin/submissions')}}"> <span>Submissions</span></a></li>
                 <li><a href="javascript:;"> <span>Reports</span> </a>
                   <ul class="acc-menu">
                       <li><a href="{{url('admin/reports/drivers')}}"><span>Drivers</span></a></li>
                       <li><a href="{{url('admin/reports/companies')}}"><span>Companies</span></a></li>
+                  </ul>
+                </li>
+                <li><a href="javascript:;"> <span>Submissions</span></a>
+                   <ul class="acc-menu">
+                      <li><a href="{{url('admin/submissions_reports/drivers')}}"><span>Drivers</span></a></li>
+                      <li><a href="{{url('admin/submissions_reports/companies')}}"><span>Companies</span></a></li>
                   </ul>
                 </li>
               <?php endif; ?>

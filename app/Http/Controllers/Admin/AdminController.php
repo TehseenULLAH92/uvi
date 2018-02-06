@@ -17,7 +17,6 @@ class AdminController extends Controller
       $data['total_users']      = DB::table('users')->count();
       $data['total_drivers']    = DB::table('drivers')->count();
       $data['total_companies']  = DB::table('companies')->count();
-
       return view('admin.admin',$data);
   }
   public function dashboard(){

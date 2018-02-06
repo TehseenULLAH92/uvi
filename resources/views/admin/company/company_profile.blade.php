@@ -100,9 +100,13 @@
                       <div class="row">
                         <div class="container">
                           <div class="row">
-                            <div class="col-md-12">
+                           <!--  <div class="col-md-12">
                               <?php if(isset($companie)) ?>
                               <a href="{{  url('admin/users/add_user/'.$companies->id) }}" class="btn btn-success btn-radius">+</a> Register New User
+                            </div> -->
+                             <div class="col-md-12">
+                              <?php if(isset($companie)) ?>
+                              <a href="{{  url('admin/drivers/add/'.$companies->id) }}" class="btn btn-success btn-radius">+</a> Register New Driver
                             </div>
                           </div>
                         </div>
@@ -113,17 +117,16 @@
                               <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <?php foreach ($users as $key => $companie): ?>
+                              <?php foreach ($drivers as $key => $companie): ?>
                                 <tr class="odd gradeX">
                                   <td><?=$companie->name?></td>
                                   <td><?=$companie->email?></td>
-                                  <td><?php
-                                  if($companie->role == "admin"){
+                                 <!--  <td><?php
+                                 /* if($companie->role == "admin"){
                                     echo "<strong class='btn btn-green'>&nbsp;&nbsp;&nbsp;&nbsp;Level 1 &nbsp;&nbsp;&nbsp;</strong>";
                                   }
                                   else if($companie->role == "crcompanies"){
@@ -134,8 +137,8 @@
                                   }
                                   else {
                                     echo "<strong class='btn btn-green'>Level 3 CRE</strong>";
-                                  }
-                                  ?></td>
+                                  }*/
+                                  ?></td> -->
                                   <td class="center"><a href="{{  url('admin/users/edit/'.$companie->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/users/delete/'.$companie->id) }}">Delete</a></td>
                                 </tr>
                               <?php endforeach; ?>

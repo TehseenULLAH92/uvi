@@ -17,14 +17,14 @@ class DashboardController extends Controller
       // tab latest report
       $data['latest_reports'] = DB::table('reports')
       ->leftJoin('drivers', 'reports.driver_id', '=', 'drivers.id')
-      ->whereNull('company_id')
+      ->whereNull('reports.company_id')
       ->select('*')
       ->limit(3)
       ->orderByRaw('reports.id DESC')
       ->get();
       $data['latest_creports'] = DB::table('reports')
       ->leftJoin('companies', 'reports.company_id', '=', 'companies.id')
-      ->whereNull('driver_id')
+      ->whereNull('reports.driver_id')
       ->select('*')
       ->limit(2)
       ->orderByRaw('reports.id DESC')
@@ -32,7 +32,7 @@ class DashboardController extends Controller
       // tab driver with most report registered
       $data['driver_most_report_registered'] = DB::table('reports')
       ->leftJoin('drivers', 'reports.driver_id', '=', 'drivers.id')
-      ->whereNull('company_id')
+      ->whereNull('reports.company_id')
       ->select('*')
       ->limit(3)
       ->orderByRaw('reports.id DESC')
@@ -40,7 +40,7 @@ class DashboardController extends Controller
       // tab companies with most report registered
       $data['companies_most_report_registered'] = DB::table('reports')
       ->leftJoin('companies', 'reports.company_id', '=', 'companies.id')
-      ->whereNull('driver_id')
+      ->whereNull('reports.driver_id')
       ->select('*')
       //->count('company_id')
       //->groupBy('reports.id')

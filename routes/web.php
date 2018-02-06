@@ -14,12 +14,11 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'Admin\AdminController@index');
+Route::get('/', 'Admin\DashboardController@index');
 
 Auth::routes();
 // Administration LEVEL 1
 Route::group(['prefix' => 'admin'], function () {
-  Route::get('dashboard', 'Admin\AdminController@index');
   //Route::get('dashboard', 'admin\DashboardController@index');
   Route::get('dashboard', 'Admin\DashboardController@index');
   Route::get('companies', 'Admin\CompaniesController@index');
@@ -32,6 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('users/delete/{driver_id}', 'Admin\UserController@delete');
   Route::get('/drivers', 'Admin\DriversController@index');
   Route::get('drivers/add', 'Admin\DriversController@add');
+  Route::get('drivers/add/{company_id}', 'Admin\DriversController@add_company_driver');
   Route::get('drivers/edit/{driver_id}', 'Admin\DriversController@edit');
   Route::get('drivers/delete/{driver_id}', 'Admin\DriversController@delete');
   Route::get('submissions', 'Admin\SubmissionsController@index');
@@ -40,9 +40,16 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('users/add_user/{id}', 'Admin\UserController@add_user_to_company_view');
   Route::get('reports/drivers', 'Admin\ReportController@index');
   Route::get('reports/companies', 'Admin\ReportController@cindex');
+  Route::get('submissions_reports/drivers', 'Admin\ReportController@submissions_drivers');
+  Route::get('submissions_reports/companies', 'Admin\ReportController@submissions_companies');
   // Route::get('reports/add', 'Admin\ReportController@add');
   Route::get('reports/add_report/{id}', 'Admin\ReportController@add_new_report_view');
   Route::get('reports/add_creport/{id}', 'Admin\ReportController@add_new_creport_view');
+  Route::post('driver_report/update_driver_report', 'Admin\ReportController@update_driver_report');
+  Route::post('company_report/update_company_report', 'Admin\ReportController@update_company_report');
+
+  Route::get('driver_report/edit/{id}', 'Admin\ReportController@edit_driver_report');
+  Route::get('company_report/edit/{id}', 'Admin\ReportController@edit_company_report');
 
   // post data
   Route::post('add_new_companies', 'Admin\CompaniesController@add_new_companies');
@@ -53,6 +60,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::post('updatePassword', 'Admin\UserController@updatePassword');
   Route::post('updateProfile', 'Admin\UserController@updateProfile');
   Route::post('users/add_user_to_company/{id}', 'Admin\UserController@add_user_to_company');
+  Route::post('drivers/add_driver_to_company', 'Admin\DriversController@add_driver_to_company');
   //Route::post('add_new_report', 'Admin\ReportController@add_new_report');
   Route::post('reports/add_new_report/{id}', 'Admin\ReportController@add_new_report_id');
   Route::post('reports/add_new_creport/{id}', 'Admin\ReportController@add_new_creport_id');

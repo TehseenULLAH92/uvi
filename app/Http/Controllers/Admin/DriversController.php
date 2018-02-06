@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth,App\Drivers,DB;
+use Auth,App\Drivers,DB,App\Companies;
 
 class DriversController extends Controller
 {
@@ -38,6 +38,32 @@ class DriversController extends Controller
   }
   public function add(){
     return view('admin.drivers.add');
+  }
+
+  public function add_company_driver($id) {
+        $company = Companies::find($id);
+      return view('admin.company.add_driver_to_company',['company'=>$company]);
+  }
+  public function add_driver_to_company(Request $request) {
+      $data['name']        = $request->input('name');
+      $data['license']   = $request->input('license');
+      $data['email']    = $request->input('email');
+      $data['company_id']  = $request->input('company_id');   
+      $data['phonenumber']       = $request->input('phonenumber');
+      $data['address']        = $request->input('address');
+      $data['joiningdate']    = bcrypt($request->input('joiningdate'));
+
+      $inserted = DB::table('Drivers')->insert($data);
+      if($inserted)
+      {
+        flash('User Added Successfully')->success();
+          return redirect('admin/companies/profile/' . $request->input('company_id'));
+      }
+      else
+      {
+        flash('Error')->error();
+          return redirect('admin/drivers/add/' . $request->input('company_id'));
+      }
   }
   public function edit($driver_id){
     $driver = Drivers::find($driver_id);

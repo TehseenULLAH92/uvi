@@ -40,7 +40,7 @@
                       <td><?=$report->issue?></td>
                       <td><?=$report->cost_involved?></td>
                       <td><?=$report->heppens?></td>
-                      <td><a href="{{  url('admin/reports/edit/'.$report->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/reports/delete/'.$report->id) }}">Delete</a></td>
+                      <td><a href="{{  url('admin/driver_report/edit/'.$report->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/reports/delete/'.$report->id) }}">Delete</a></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>
