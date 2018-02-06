@@ -23,6 +23,7 @@ class CreateTableReports extends Migration
         $table->string('issue');
         $table->string('cost_involved');
         $table->string('heppens');
+        $table->boolean('status');
         $table->rememberToken();
         $table->timestamps();
       });
