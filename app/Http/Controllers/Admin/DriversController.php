@@ -48,10 +48,10 @@ class DriversController extends Controller
       $data['name']        = $request->input('name');
       $data['license']   = $request->input('license');
       $data['email']    = $request->input('email');
-      $data['company_id']  = $request->input('company_id');   
+      $data['company_id']  = $request->input('company_id');
       $data['phonenumber']       = $request->input('phonenumber');
       $data['address']        = $request->input('address');
-      $data['joiningdate']    = bcrypt($request->input('joiningdate'));
+      $data['joiningdate']    = $request->input('joiningdate');
 
       $inserted = DB::table('Drivers')->insert($data);
       if($inserted)

@@ -15,7 +15,7 @@ class CreateDriversTable extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('company_id');
+            $table->integer('company_id')->unsigned()->nullable();
             $table->string('name');
             $table->string('license');
             $table->string('email');
@@ -23,6 +23,9 @@ class CreateDriversTable extends Migration
             $table->string('address');
             $table->string('joiningdate');
             $table->timestamps();
+        });
+        Schema::table('drivers', function($table) {
+          $table->foreign('company_id')->references('id')->on('drivers');
         });
     }
 
@@ -34,5 +37,6 @@ class CreateDriversTable extends Migration
     public function down()
     {
         Schema::dropIfExists('drivers');
+        Schema::enableForeignKeyConstraints();
     }
 }

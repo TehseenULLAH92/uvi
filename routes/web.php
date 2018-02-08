@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
 
   Route::get('driver_report/edit/{id}', 'Admin\ReportController@edit_driver_report');
   Route::get('company_report/edit/{id}', 'Admin\ReportController@edit_company_report');
+  //Route::get('get_count_report/{id}', 'Admin\DashboardController@get_count_report');
 
   // post data
   Route::post('add_new_companies', 'Admin\CompaniesController@add_new_companies');

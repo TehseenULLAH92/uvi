@@ -84,7 +84,11 @@
                   <?php foreach ($driver_most_report_registered as $key => $single_report): ?>
                     <tr>
                       <td>{{$single_report->name}}</td>
-                      <td>{{$single_report->id}}</td>
+                      <td>
+                        <?php
+                        echo $single_report->total;
+                        ?>
+                        </td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>
@@ -115,7 +119,15 @@
                     <tr>
                       <td><?=$expiring_membership->name?></td>
                       <td><?=$expiring_membership->membership?></td>
-                      <td><?=date("j F Y",strtotime($expiring_membership->startdate))?></td>
+                      <td>
+                        <?php
+                          $datetime1 = strtotime($expiring_membership->startdate);
+                          $datetime2 = strtotime($expiring_membership->enddate);
+                          $interval = $datetime2 - $datetime1;
+                          //echo $interval->date('');
+
+                        ?>
+                        <?=floor($interval / 86400)?></td>
                       <td><?=date("j F Y",strtotime($expiring_membership->enddate))?></td>
                     </tr>
                   <?php endforeach; ?>
@@ -141,7 +153,7 @@
                   <?php foreach ($companies_most_report_registered as $key => $single_report): ?>
                     <tr>
                       <td>{{$single_report->name}}</td>
-                      <td>{{$single_report->id}}</td>
+                      <td>{{$single_report->total}}</td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

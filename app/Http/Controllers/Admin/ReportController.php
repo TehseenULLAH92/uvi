@@ -60,7 +60,7 @@ class ReportController extends Controller
     $data['issue']          = $request->input('issue');
     $data['cost_involved']  = $request->input('cost_involved');
     $data['heppens']        = $request->input('heppens');
-
+    $data['status'] = $request->input('status');
     $inserted = DB::table('reports')->insert($data);
     if($inserted)
     {
@@ -85,14 +85,14 @@ class ReportController extends Controller
     return view('admin.reports.add_report_company',['company'=>$company]);
   }
    public function edit_driver_report($id){
-    
+
     $reports = Reports::find($id);
     $issues = explode(',', $reports->issue);
     $driver = Drivers::find($reports->driver_id);
     return view('admin.reports.edit_driver_report',['reports'=>$reports, 'issues' => $issues,'driver' => $driver]);
   }
   public function edit_company_report($id){
-    
+
     $reports = Reports::find($id);
     $issues = explode(',', $reports->issue);
     $company = Drivers::find($reports->company_id);
@@ -111,12 +111,12 @@ class ReportController extends Controller
     $data['heppens']        = $request->input('heppens');
     $data['created_at']     = date('Y-m-d H:i:s');
     $data['updated_at']     = date('Y-m-d H:i:s');
-
+    $data['status'] = $request->input('status');
     $inserted = DB::table('reports')->insert($data);
     if($inserted)
     {
       flash('Report Added Successfully')->success();
-      return redirect('admin/reports/drivers');
+      return redirect('admin/submissions_reports/drivers');
     }
     else
     {
@@ -141,7 +141,7 @@ class ReportController extends Controller
     if($update)
     {
       flash('Report updated Successfully')->success();
-      return redirect('admin/submissions_reports/drivers');
+      return redirect('admin/reports/drivers');
     }
     else
     {
@@ -168,7 +168,7 @@ class ReportController extends Controller
     if($update)
     {
       flash('Report updated Successfully')->success();
-      return redirect('admin/submissions_reports/companies');
+      return redirect('admin/reports/companies');
     }
     else
     {
@@ -189,12 +189,12 @@ class ReportController extends Controller
     $data['heppens']        = $request->input('heppens');
     $data['created_at']     = date('Y-m-d H:i:s');
     $data['updated_at']     = date('Y-m-d H:i:s');
-
+    $data['status'] = $request->input('status');
     $inserted = DB::table('reports')->insert($data);
     if($inserted)
     {
       flash('Report Added Successfully')->success();
-      return redirect('admin/reports/companies');
+      return redirect('admin/submissions_reports/companies');
     }
     else
     {
