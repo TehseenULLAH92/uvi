@@ -4,179 +4,93 @@
 <div id="page-content">
   <div id='wrap'>
     <div id="page-heading" class="page-bottom">
-      <h1>Update Company Details</h1>
+      <h1>Add New User</h1>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="panel panel-info">
             <div class="panel-body">
-              <form role="form" action="{{ url('admin/companies/update/'.$companies->id) }}" method="POST" id="wizard" class="form-horizontal">
-                {{ csrf_field() }}
-                <fieldset title="1">
-                  <legend>General</legend>
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Company Type*</label>
-                          <div class="col-md-12">
-                            <select id="e1" name="type" style="width:100%" class="populate">
-                              <option value="">Select Type</option>
-                              <option value="CR"
-                              <?php if($companies->type == "CR")
-                                {
-                                  echo "selected";
-                                }
-                                ?>>Car Rental</option>
-                              <option value="IN"
-                              <?php
-                              if($companies->type == "IN"){
-                                 echo "selected";
-                               }
-                               ?>>Insurance Company</option>
-                            </select>
-                          </div>
-                        </div>
 
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Phone Number*</label>
+            <form action="{{('../update_user')}}" method="POST" id="wizard" class="form-horizontal">
+              {{ csrf_field() }}
+              <fieldset title="1">
+                <legend>General</legend>
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fieldname" class="col-md-12 control-label">Name*</label>
                           <div class="col-md-12">
-                            <input id="fieldphone" class="form-control" name="phonenumber" value="{{$companies->phonenumber}}" type="text" required>
+                            <input id="fieldname" value="{{ $user->name }}" class="form-control" name="name" minlength="4" type="text" required>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Company Name*</label>
+                      <input type="hidden" value="{{ $user->id }}" name="id">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fieldname" class="col-md-12 control-label">First Name*</label>
                           <div class="col-md-12">
-                            <input id="fieldname" class="form-control" name="name" value="{{$companies->name}}" type="text" required>
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Email Address*</label>
-                          <div class="col-md-12">
-                            <input id="fieldemail" class="form-control" type="email" value="{{$companies->email}}" name="email" required>
+                            <input id="fieldname" value="{{ $user->firstname }}" class="form-control" name="firstname" minlength="4" type="text" required>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Company Address*</label>
-                          <div class="col-md-12">
-                            <input id="fieldaddress" class="form-control" value="{{$companies->address}}" name="address" type="text" required>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Website</label>
-                          <div class="col-md-12">
-                            <input id="fieldurl" class="form-control" value="{{$companies->website}}" type="text" name="website">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="col-md-12 control-label">Image Upload Widgets</label>
-                        <div class="col-sm-9">
-                          <div class="fileinput fileinput-new" data-provides="fileinput">
-                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"><img src="{{$companies->image}}"></div>
-                            <div>
-                              <span class="btn btn-default btn-file"><span class="fileinput-new">Upload</span><span class="fileinput-exists">Change</span><input type="file" name="image"></span>
-                              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                      <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="fieldname" class="col-md-12 control-label">Last Name*</label>
+                            <div class="col-md-12">
+                              <input id="fieldaddress"  value="{{ $user->lastname }}" class="form-control" name="lastname" minlength="4" type="text" required>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <fieldset title="2">
-                  <legend>Contact Person</legend>
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">First Name</label>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fieldname" class="col-md-12 control-label">Email Address*</label>
                           <div class="col-md-12">
-                            <input id="fieldfirstname" class="form-control" name="personfname" value="{{$companies->personfname}}" type="text" required>
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Phone Number</label>
-                          <div class="col-md-12">
-                            <input id="fieldphone" class="form-control" name="personphone" value="{{$companies->personphone}}" type="text" required>
+                            <input id="fieldemail" class="form-control"  value="{{ $user->email }}" type="email" name="email" required>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Last Name</label>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fieldname" class="col-md-12 control-label">User Level*</label>
                           <div class="col-md-12">
-                            <input id="fieldlastname" class="form-control" name="personlname" value="{{$companies->personlname}}" type="text" required>
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Email Address</label>
-                          <div class="col-md-12">
-                            <input id="fieldemail" class="form-control" type="email" value="{{$companies->personemail}}" name="personemail" required>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <fieldset title="3">
-                  <legend>Membership</legend>
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Type of membership</label>
-                          <div class="col-md-12">
-                            <select id="e2" style="width:100%" name="membership" class="populate">
-                              <option value="">Select Membership</option>
-                              <option value="monthly"
-                              <?php if($companies->membership == "monthly")
-                                {
-                                  echo "selected";
-                                }
-                                ?>>Monthly</option>
-                              <option value="yearly"
-                              <?php if($companies->membership == "yearly")
-                                {
-                                  echo "selected";
-                                }
-                                ?>>Yearly</option>
+                            <select id="e11" style="width:100%" name="role" class="form-control populate1" required>
+                              <option value="">Please Select Level</option>
+                              <option <?= $user->role == 'admin' ? 'selected' : ''; ?> value="admin">Admin</option>
+                              <option <?= $user->role == 'crcompanies' ? 'selected' : ''; ?> value="crcompanies">Car Rental Companies</option>
+                              <option <?= $user->role == 'incompanies' ? 'selected' : ''; ?> value="incompanies">Insurance Companies</option>
+                              <option <?= $user->role == 'cremployees' ? 'selected' : ''; ?> value="cremployees">Car Rental Employees</option>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">Start Date</label>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fieldname" class="col-md-12 control-label">Company</label>
                           <div class="col-md-12">
-                            <input type="text" class="form-control" value="{{$companies->startdate}}" name="startdate" id="datepicker1">
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="col-md-6">
-                          <label for="fieldname" class="col-md-12 control-label">End Date</label>
-                          <div class="col-md-12">
-                            <input type="text" class="form-control" value="{{$companies->enddate}}" name="enddate" id="datepicker2">
+                            <select id="e1" style="width:100%" name="company_id" class="populate" required>
+                              <option value="">Please Select A Company</option>
+                              <?php foreach ($companies as $key => $companies): 
+                                    if ($companies->id == $user->company_id) :
+                              ?>
+                               <option selected value="{{$companies->id}}" >{{$companies->name}}</option>
+                             <?php else : ?>
+                                <option value="{{$companies->id}}" >{{$companies->name}}</option>
+                              <?php endif; endforeach; ?>
+                            </select>
                           </div>
                         </div>
                       </div>
                     </div>
+
                   </div>
-                </fieldset>
-                <input type="submit" class="finish btn-success btn" value="Submit" />
-              </form>
+                </div>
+              </fieldset>
+           
+              <input type="submit" class="finish btn-success btn" value="Submit" />
+            </form>
             </div>
           </div>
         </div>

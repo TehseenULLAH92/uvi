@@ -39,6 +39,28 @@ class UserController extends Controller
           return redirect('admin/users/add');
       }
     }
+
+    public function update_user(Request $request){
+      $id                  = $request->input('id');
+      $data['name']        = $request->input('name');
+      $data['firstname']   = $request->input('firstname');
+      $data['lastname']    = $request->input('lastname');
+      $data['company_id']  = $request->input('company_id');
+      $data['email']       = $request->input('email');
+      $data['role']        = $request->input('role');
+
+      $updated = DB::table('users')->where('id', $id)->update($data);
+      if($updated)
+      {
+        flash('User Added Successfully')->success();
+          return redirect('admin/users');
+      }
+      else
+      {
+        flash('Error')->error();
+          return redirect('admin/users/edit/' . $id);
+      }
+    }
     // public function add_user($companies_id){
     //   $company = Companies::find($companies_id);
     //   print_r($company);die;
@@ -48,6 +70,7 @@ class UserController extends Controller
       $data['companies'] = Companies::all();
       return view('admin.users.add',$data);
     }
+
     public function add_user_to_company_view($id){
       $company = Companies::find($id);
       $companies = DB::table('companies')
@@ -80,7 +103,9 @@ class UserController extends Controller
     }
     public function edit($user_id){
       $user = User::find($user_id);
-      return view('admin.users.edit',['user' => $user]);
+      $data['companies'] = Companies::all();
+      $data['user'] = $user;
+      return view('admin.users.edit',$data);
     }
     public function update(Request $request,$user_id){
       $user = User::find($user_id);

@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('companies/delete/{company_id}', 'Admin\CompaniesController@delete');
   Route::get('users', 'Admin\UserController@index');
   Route::get('users/add', 'Admin\UserController@add');
+  Route::get('users/edit/{id}', 'Admin\UserController@edit');
   Route::get('users/delete/{driver_id}', 'Admin\UserController@delete');
   Route::get('/drivers', 'Admin\DriversController@index');
   Route::get('drivers/add', 'Admin\DriversController@add');
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
   Route::post('add_new_companies', 'Admin\CompaniesController@add_new_companies');
   Route::post('companies/update/{company_id}', 'Admin\CompaniesController@update');
   Route::post('add_new_user', 'Admin\UserController@add_new_user');
+  Route::post('users/update_user', 'Admin\UserController@update_user');
   Route::post('add_new_driver', 'Admin\DriversController@add_new_driver');
   Route::post('drivers/update/{driver_id}', 'Admin\DriversController@update');
   Route::post('updatePassword', 'Admin\UserController@updatePassword');
