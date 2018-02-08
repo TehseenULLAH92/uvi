@@ -31,8 +31,6 @@ class DashboardController extends Controller
       ->orderByRaw('reports.id DESC')
       ->get();
       //tab driver with most report registered
-
-      //$data['driver_most_report_registered'] = DB::table('select drivers.name, count(*) as total from reports JOIN drivers ON reports.driver_id = drivers.id GROUP BY drivers.id');
       $data['driver_most_report_registered'] =   DB::table('reports')
       ->JOIN('drivers', 'reports.driver_id', '=', 'drivers.id')
       //->whereNull('reports.company_id')

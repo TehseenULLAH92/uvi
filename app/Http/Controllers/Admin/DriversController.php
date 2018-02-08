@@ -53,7 +53,7 @@ class DriversController extends Controller
       $data['address']        = $request->input('address');
       $data['joiningdate']    = $request->input('joiningdate');
 
-      $inserted = DB::table('Drivers')->insert($data);
+      $inserted = DB::table('drivers')->insert($data);
       if($inserted)
       {
         flash('User Added Successfully')->success();
