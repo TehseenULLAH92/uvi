@@ -4,7 +4,8 @@ namespace App\Http\Controllers\cre;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB,App\Drivers;
+use Illuminate\Support\Facades\Auth;
+use DB,App\Drivers,App\DriverLogs;
 class DriversController extends Controller
 {
   public function __construct()
@@ -34,6 +35,7 @@ class DriversController extends Controller
   }
   public function add_new_driver(Request $request){
     $data['name']           = $request->input('name');
+    $data['user_id']           = Auth::id();
     $data['license']        = $request->input('license');
     $data['email']          = $request->input('email');
     $data['phonenumber']    = $request->input('phonenumber');
@@ -60,6 +62,14 @@ class DriversController extends Controller
     return view('cre.drivers.edit',['driver' => $driver]);
   }
   public function view($driver_id){
+    $id = Auth::id();
+
+    $data['user_id']           = $id;
+    $data['driver_id']        = $driver_id;
+    $data['created_at'] = new \DateTime();
+    $data['updated_at'] =new \DateTime();
+    $inserted = DriverLogs::insert($data);
+   
     $driver = Drivers::find($driver_id);
     return view('cre.drivers.driver_profile',['driver' => $driver]);
   }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Cr;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB,App\Drivers;
+use Auth,DB,App\Drivers;
 class DriversController extends Controller
 {
   public function __construct()
@@ -18,6 +18,7 @@ class DriversController extends Controller
   }
   public function add_new_driver(Request $request){
     $data['name']           = $request->input('name');
+    $data['user_id']           = Auth::id();
     $data['license']        = $request->input('license');
     $data['email']          = $request->input('email');
     $data['phonenumber']    = $request->input('phonenumber');

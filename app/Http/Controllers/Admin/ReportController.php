@@ -103,6 +103,7 @@ class ReportController extends Controller
     $issue = implode(",", $request->input('issue'));
 
     $data['driver_id']      = $request->input('driver_id');
+    $data['user_id']        =  Auth::id();
     $data['report_submitted_person']      = Auth::user()->name;
     $data['title']          = $request->input('title');
     $data['severity']       = $request->input('severity');
@@ -181,6 +182,7 @@ class ReportController extends Controller
     $issue = implode(",", $request->input('issue'));
 
     $data['company_id']      = $request->input('company_id');
+    $data['user_id']      = Auth::id();
     $data['report_submitted_person']      = Auth::user()->name;
     $data['title']          = $request->input('title');
     $data['severity']       = $request->input('severity');

@@ -20,6 +20,7 @@ class DriversController extends Controller
   }
   public function add_new_driver(Request $request){
     $data['name']           = $request->input('name');
+    $data['user_id']           = Auth::id();
     $data['license']        = $request->input('license');
     $data['email']          = $request->input('email');
     $data['phonenumber']    = $request->input('phonenumber');
@@ -46,6 +47,7 @@ class DriversController extends Controller
   }
   public function add_driver_to_company(Request $request) {
       $data['name']        = $request->input('name');
+      $data['user_id']           = Auth::id();
       $data['license']   = $request->input('license');
       $data['email']    = $request->input('email');
       $data['company_id']  = $request->input('company_id');

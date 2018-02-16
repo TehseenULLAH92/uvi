@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth,App\User,DB,App\Companies,Hash,File;
 
-class UserController extends Controller
+class LogsController extends Controller
 {
   public function __construct()
   {
@@ -17,6 +17,75 @@ class UserController extends Controller
       $users = User::all();
       return view('admin.users.list',['users' => $users]);
     }
+  public function visited_drivers($id) {
+    $users = DB::table('driver_logs')
+      ->join('users', 'users.id', '=', 'driver_logs.user_id')
+      ->select('users.*', 'driver_logs.created_at as created_at')
+      ->where('driver_logs.user_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Visited drivers';
+
+      return view('admin.users.list_logs',$data);
+  }
+
+  public function created_drivers($id) {
+    $users = DB::table('drivers')
+      ->join('users', 'users.id', '=', 'drivers.user_id')
+      ->select('users.*', 'drivers.created_at as created_at')
+      ->where('drivers.user_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Created drivers';
+
+      return view('admin.users.list_logs',$data);
+  }
+
+   public function created_users($id) {
+    $users = DB::table('users')
+      ->select('users.*')
+      ->where('users.user_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Created users';
+
+      return view('admin.users.list_logs',$data);
+  }
+
+   public function created_reports($id) {
+    $users = DB::table('reports')
+    ->join('users', 'users.id', '=', 'reports.user_id')
+      ->select('users.*', 'reports.created_at as created_at')
+      ->where('reports.user_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Created reports';
+
+      return view('admin.users.list_logs',$data);
+  }
+  public function driver_visitors($id) {
+    $users = DB::table('driver_logs')
+      ->join('users', 'users.id', '=', 'driver_logs.user_id')
+      ->select('users.*', 'driver_logs.created_at as created_at')
+      ->where('driver_logs.driver_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Driver visitors';
+
+      return view('admin.users.list_logs',$data);
+  }
+   public function driver_reports($id) {
+    $users = DB::table('reports')
+    ->join('users', 'users.id', '=', 'reports.user_id')
+      ->select('users.*', 'reports.created_at as created_at')
+      ->where('reports.driver_id',$id)
+      ->get();
+      $data['users'] = $users;
+      $data['log_title'] = 'Driver reporters';
+
+      return view('admin.users.list_logs',$data);
+  }
+
     public function add_new_user(Request $request){
       $data['name']        = $request->input('name');
       $data['user_id']        = Auth::id();

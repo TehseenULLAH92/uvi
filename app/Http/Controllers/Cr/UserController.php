@@ -20,6 +20,7 @@ class UserController extends Controller
   }
   public function add_new_user(Request $request){
     $data['name']        = $request->input('name');
+    $data['user_id']        = Auth::id();
     $data['firstname']   = $request->input('firstname');
     $data['lastname']    = $request->input('lastname');
     $data['company_id']    = $request->input('company_id');
@@ -47,6 +48,7 @@ class UserController extends Controller
   }
   public function add_user_to_company(Request $request, $id){
     $data['name']        = $request->input('name');
+    $data['user_id']        = Auth::id();
     $data['firstname']   = $request->input('firstname');
     $data['lastname']    = $request->input('lastname');
     $data['company_id']  = $id;   //$request->input('company_id');

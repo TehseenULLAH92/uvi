@@ -15,6 +15,7 @@ class CreateTableReports extends Migration
     {
       Schema::create('reports', function (Blueprint $table) {
         $table->increments('id');
+        $table->integer('user_id')->unsigned()->nullable();
         $table->integer('driver_id')->unsigned()->nullable();
         $table->integer('company_id')->unsigned()->nullable();
         $table->string('report_submitted_person');

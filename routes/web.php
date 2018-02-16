@@ -29,6 +29,18 @@ Route::group(['prefix' => 'admin'], function () {
   Route::get('users', 'Admin\UserController@index');
   Route::get('users/add', 'Admin\UserController@add');
   Route::get('users/edit/{id}', 'Admin\UserController@edit');
+  // start logs
+  Route::get('users/visited_drivers/{id}', 'Admin\LogsController@visited_drivers');
+  Route::get('users/created_drivers/{id}', 'Admin\LogsController@created_drivers');
+  Route::get('users/created_users/{id}', 'Admin\LogsController@created_users');
+  Route::get('users/created_reports/{id}', 'Admin\LogsController@created_reports');
+  Route::get('users/driver_visitors/{id}', 'Admin\LogsController@driver_visitors');
+  Route::get('users/driver_reports/{id}', 'Admin\LogsController@driver_reports');
+
+ /* Route::get('users/edit/{id}', 'Admin\UserController@edit');
+  Route::get('users/edit/{id}', 'Admin\UserController@edit');*/
+  // end logs
+
   Route::get('users/delete/{driver_id}', 'Admin\UserController@delete');
   Route::get('/drivers', 'Admin\DriversController@index');
   Route::get('drivers/add', 'Admin\DriversController@add');

@@ -24,6 +24,9 @@
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    @if(Auth::user()->role = 'admin')
+                    <th>Logs</th>
+                    @endif
                     <th>Role</th>
                     <th>Action</th>
                   </tr>
@@ -33,6 +36,15 @@
                     <tr class="odd gradeX">
                       <td><?=$companie->name?></td>
                       <td><?=$companie->email?></td>
+                      @if(Auth::user()->role = 'admin')
+                      <td><?php if ($companie->role == 'cremployees') {
+                          echo '<a href="' . url("admin/users/visited_drivers/".$companie->id) . '">Visited drivers</a>';
+                      } elseif ($companie->role == 'incompanies') {
+                         echo '<a href="' . url("admin/users/visited_drivers/".$companie->id) . '">Visited drivers</a> | <a href="' . url("admin/users/created_reports/".$companie->id) . '">Created reports</a>';
+                      }  elseif ($companie->role == 'crcompanies') {
+                         echo '<a href="' . url("admin/users/created_users/".$companie->id) . '">Created users</a> | <a href="' . url("admin/users/created_drivers/".$companie->id) . '">Created drivers</a>';
+                      } ?></td>
+                      @endif
                       <td><?php
                       if($companie->role == "admin"){
                         echo "<strong class='btn btn-green'>&nbsp;&nbsp;&nbsp;&nbsp;Level 1 &nbsp;&nbsp;&nbsp;</strong>";
