@@ -28,7 +28,7 @@
                     <th>What's The Issue?</th>
                     <th>Involved Client Cost?</th>
                     <th>What Did It Happen?</th>
-                    <th>Action</th>
+                    <!-- <th>Action</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -40,7 +40,7 @@
                       <td><?=$report->issue?></td>
                       <td><?=$report->cost_involved?></td>
                       <td><?=$report->heppens?></td>
-                      <td><a href="{{  url('incompanies/reports/edit/'.$report->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('incompanies/reports/delete/'.$report->id) }}">Delete</a></td>
+                      <!-- <td><a href="{{  url('incompanies/reports/edit/'.$report->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('incompanies/reports/delete/'.$report->id) }}">Delete</a></td> -->
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

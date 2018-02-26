@@ -24,17 +24,37 @@
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
+
+                    <th>Logs</th>
                     <th>Role</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($users as $key => $user): ?>
+                  <?php foreach ($users as $key => $companie): ?>
                     <tr class="odd gradeX">
-                      <td><?=$user->name?></td>
-                      <td><?=$user->email?></td>
-                      <td><?php if($user->role == "cremployees"){
+                      <td><?=$companie->name?></td>
+                      <td><?=$companie->email?></td>
+                      <td><?php if ($companie->role == 'cremployees') {
+                          echo '<a href="' . url("crcompanies/users/visited_drivers/".$companie->id) . '">Visited drivers</a>';
+                      } elseif ($companie->role == 'incompanies') {
+                         echo '<a href="' . url("crcompanies/users/visited_drivers/".$companie->id) . '">Visited drivers</a> | <a href="' . url("crcompanies/users/created_reports/".$companie->id) . '">Created reports</a>';
+                      }  elseif ($companie->role == 'crcompanies') {
+                         echo '<a href="' . url("crcompanies/users/created_users/".$companie->id) . '">Created users</a> | <a href="' . url("crcompanies/users/created_drivers/".$companie->id) . '">Created drivers</a>';
+                      } ?></td>
+                      <td><?php
+                      if($companie->role == "admin"){
+                        echo "<strong class='btn btn-green'>&nbsp;&nbsp;&nbsp;&nbsp;Level 1 &nbsp;&nbsp;&nbsp;</strong>";
+                      }
+                      else if($companie->role == "crcompanies"){
+                        echo " <strong class='btn btn-green'>Level 2A CR</strong> ";
+                      }
+                      else if($companie->role == "incompanies"){
+                        echo "<strong class='btn btn-green'>Level 2B IN </strong>";
+                      }
+                      else {
                         echo "<strong class='btn btn-green'>Level 3 CRE</strong>";
-                      }?></td>
+                      }
+                      ?></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

@@ -60,6 +60,7 @@ class ReportController extends Controller
     $data['issue']          = $issue;
     $data['cost_involved']  = $request->input('cost_involved');
     $data['heppens']        = $request->input('heppens');
+    $data['status']        = $request->input('status');
     $data['created_at']     = date('Y-m-d H:i:s');
     $data['updated_at']     = date('Y-m-d H:i:s');
 

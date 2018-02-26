@@ -96,6 +96,13 @@ Route::group(['prefix' => 'crcompanies'], function () {
   Route::get('reports', 'Cr\ReportController@index');
   // Route::get('reports/add', 'Cr\ReportController@add');
   Route::get('reports/add_report/{id}', 'Cr\ReportController@add_new_report_view');
+  // start logs
+  Route::get('users/visited_drivers/{id}', 'Cr\LogsController@visited_drivers');
+  Route::get('users/created_drivers/{id}', 'Cr\LogsController@created_drivers');
+  Route::get('users/created_users/{id}', 'Cr\LogsController@created_users');
+  Route::get('users/created_reports/{id}', 'Cr\LogsController@created_reports');
+  Route::get('users/driver_visitors/{id}', 'Cr\LogsController@driver_visitors');
+  Route::get('users/driver_reports/{id}', 'Cr\LogsController@driver_reports');
 
   Route::post('add_new_driver', 'Cr\DriversController@add_new_driver');
   Route::post('drivers/update/{driver_id}', 'Cr\DriversController@update');

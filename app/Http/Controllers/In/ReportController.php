@@ -26,6 +26,7 @@ class ReportController extends Controller
     $data['issue']          = $request->input('issue');
     $data['cost_involved']  = $request->input('cost_involved');
     $data['heppens']        = $request->input('heppens');
+    $data['status']        = $request->input('status');
 
     $inserted = DB::table('reports')->insert($data);
     if($inserted)
@@ -46,7 +47,7 @@ class ReportController extends Controller
     ->select('*')
     ->where('drivers.id',$id)
     ->get();
-    return view('incompanies.reports.add_report',['drivers' => $drivers,'driver'=>$driver]);
+    return view('in.reports.add_report',['drivers' => $drivers,'driver'=>$driver]);
   }
   public function add_new_report_id(Request $request,$id){
 
@@ -60,6 +61,7 @@ class ReportController extends Controller
     $data['issue']          = $issue;
     $data['cost_involved']  = $request->input('cost_involved');
     $data['heppens']        = $request->input('heppens');
+    $data['status']        = $request->input('status');
     $data['created_at']     = date('Y-m-d H:i:s');
     $data['updated_at']     = date('Y-m-d H:i:s');
 

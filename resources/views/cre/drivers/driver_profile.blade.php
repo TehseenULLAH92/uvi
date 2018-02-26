@@ -46,9 +46,9 @@
                                     <tr>
                                       <td>Joining Date</td>
                                       <td><?=$driver->joiningdate?></td>
+                                      <td>license #</td>
+                                      <td><?=$driver->license?></td>
                                     </tr>
-                                    <tr><td colspan="4"><hr></td></tr>
-
                                   </tbody>
                                 </table>
                               </div>

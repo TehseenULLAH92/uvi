@@ -26,7 +26,8 @@
                             <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
                             </div>
                             <div>
-                            <input type="hidden" name="driver_id" value="{{$driver->id}}">
+                              <input type="hidden" name="driver_id" value="{{$driver->id}}">
+                              <input type="hidden" name="status" value="0">
                               <!-- <span class="btn btn-default btn-file">
                                 <span class="fileinput-new">Upload</span>
                                 <span class="fileinput-exists">Change</span>

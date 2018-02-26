@@ -28,6 +28,14 @@
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
+                            <label for="fieldname" class="col-md-12 control-label">License</label>
+                            <div class="col-md-12">
+                              <input id="fieldname" class="form-control" value="{{$driver->license}}" name="license" minlength="4" type="text" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
                             <label for="fieldname" class="col-md-12 control-label">Email*</label>
                             <div class="col-md-12">
                               <input id="fieldname" class="form-control" name="email" value="{{$driver->email}}"type="text" required>
