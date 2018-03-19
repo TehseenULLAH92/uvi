@@ -34,10 +34,10 @@
                   <?php foreach ($companies as $key => $companie): ?>
                     <tr class="odd gradeX">
                       <td><?=$companie->type?></td>
-                      <td><?=$companie->name?></td>
+                      <td><?=$companie->fname?></td>
                       <td><?=$companie->address?></td>
-                      <td>static - 10</td>
-                      <td class="center"> static - 2</td>
+                      <td>10</td>
+                      <td class="center"> 2</td>
                       <td class="center"><?=$companie->startdate?> - <?=$companie->enddate?></td>
                       <td class="center"><a href="{{  url('admin/companies/edit/'.$companie->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/companies/delete/'.$companie->id) }}">Delete</a></td>
                     </tr>

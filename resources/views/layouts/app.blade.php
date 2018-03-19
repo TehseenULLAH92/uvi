@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Car Rent') }}</title>
+  <title>User Vehicle Information</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Avant">
@@ -24,7 +24,7 @@
     <?php if (Auth::user()): ?>
       <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
         <div class="navbar-header pull-left">
-          <a class="navbar-brand" href="{{'/'}}">{{ config('app.name', 'Rent Car') }}</a>
+          <a class="navbar-brand" href="{{'/'}}"> <img src="{{ asset('admin/assets/img/logo.png') }}" alt=""> </a>
         </div>
         <ul class="nav navbar-nav pull-right toolbar">
           <li><a href="{{ route('logout') }}"

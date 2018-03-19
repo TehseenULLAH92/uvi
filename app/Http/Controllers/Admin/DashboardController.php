@@ -34,8 +34,8 @@ class DashboardController extends Controller
       $data['driver_most_report_registered'] =   DB::table('reports')
       ->JOIN('drivers', 'reports.driver_id', '=', 'drivers.id')
       //->whereNull('reports.company_id')
-      ->select(array('drivers.id as id', 'drivers.name as name', DB::raw('COUNT(reports.driver_id) as total')))
-      ->groupBy(['drivers.id','drivers.name'])
+      ->select(array('drivers.id as id', 'drivers.fname as name', DB::raw('COUNT(reports.driver_id) as total')))
+      ->groupBy(['drivers.id','drivers.fname'])
       ->limit(3)
       ->get();
       // tab companies with most report registered

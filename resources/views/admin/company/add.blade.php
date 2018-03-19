@@ -63,12 +63,12 @@
                             <input class="form-control" type="text" name="website">
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                           <label class="col-md-12 control-label">License #</label>
                           <div class="col-md-12">
                             <input class="form-control" type="text" name="license">
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                     <div class="col-md-4">

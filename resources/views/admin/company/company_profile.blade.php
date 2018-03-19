@@ -17,7 +17,6 @@
                 <fieldset title="1">
                   <legend>General</legend>
                   <div class="container">
-
                     <div class="row">
                       <div class="col-md-12">
                         <div class="panel panel-midnightblue">
@@ -89,9 +88,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div> <!-- container -->
-
+                    </div>
+                  </div> <!-- container -->
                 <div class="form-group">
                   <div class="col-md-12">
                     <div class="container">
@@ -115,16 +113,23 @@
                           <table cellpadding="0" cellspacing="0" border="0" class="table table-striped  datatables" id="example">
                             <thead>
                               <tr>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>License</th>
+                                <th>Report Amount</th>
+                                <th>Submitted By</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <?php foreach ($drivers as $key => $companie): ?>
+                              <?php
+                               foreach ($drivers as $key => $companie): ?>
                                 <tr class="odd gradeX">
-                                  <td><?=$companie->name?></td>
-                                  <td><?=$companie->email?></td>
+                                  <td><?=$companie->fname?></td>
+                                  <td><?=$companie->lname?></td>
+                                  <td><?=$companie->license?></td>
+                                  <td><?php echo $companie->report_amount?></td>
+                                  <td><?=$companie->submitted_by?></td>
                                  <!--  <td><?php
                                  /* if($companie->role == "admin"){
                                     echo "<strong class='btn btn-green'>&nbsp;&nbsp;&nbsp;&nbsp;Level 1 &nbsp;&nbsp;&nbsp;</strong>";
@@ -139,7 +144,7 @@
                                     echo "<strong class='btn btn-green'>Level 3 CRE</strong>";
                                   }*/
                                   ?></td> -->
-                                  <td class="center"><a href="{{  url('admin/users/edit/'.$companie->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/users/delete/'.$companie->id) }}">Delete</a></td>
+                                  <td class="center"><a href="{{  url('admin/drivers/edit/'.$companie->id) }}">Edit</a>&nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/drivers/delete/'.$companie->id) }}">Delete</a></td>
                                 </tr>
                               <?php endforeach; ?>
                             </tbody>
@@ -147,41 +152,6 @@
                         </div>
                       </div>
                     </div> <!-- container -->
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset title="2">
-                <legend>Log</legend>
-
-                <div class="row">
-                  <div class="col-xs-12">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Action Taken</th>
-                          <th>Date</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Viewed Profile of <a href="#">John Doe</a></td>
-                          <td>15 mar 2018</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Viewed Profile of <a href="#">John Doe</a></td>
-                          <td>15 mar 2018</td>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Viewed Profile of <a href="#">John Doe</a></td>
-                          <td>15 mar 2018</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
                   </div>
                 </div>
               </fieldset>

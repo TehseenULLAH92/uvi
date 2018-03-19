@@ -17,16 +17,20 @@ class CreateDriversTable extends Migration
             $table->increments('id');
             $table->integer('company_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->string('name');
+            $table->string('fname');
+            $table->string('lname');
             $table->string('license')->nullable();
-            $table->string('email');
-            $table->string('phonenumber');
-            $table->string('address');
-            $table->string('joiningdate');
+            $table->string('submitted_by');
+            $table->string('report_amount');
+            // $table->string('email');
+            // $table->string('phonenumber');
+            // $table->string('address');
+            // $table->string('joiningdate');
             $table->timestamps();
         });
         Schema::table('drivers', function($table) {
-          $table->foreign('company_id')->references('id')->on('drivers');
+          $table->foreign('company_id')->references('id')->on('companies');
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

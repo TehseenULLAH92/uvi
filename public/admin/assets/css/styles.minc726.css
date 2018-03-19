@@ -8715,7 +8715,7 @@ body.static-header {
   border: none;
 }
 /* Logo */
-.navbar-brand {
+/* .navbar-brand {
   font: 0/0 a !important;
   color: transparent !important;
   text-shadow: none !important;
@@ -8724,6 +8724,13 @@ body.static-header {
   background: url("../img/logo.png") no-repeat center center;
   height: 40px;
   width: 106px;
+} */
+a.navbar-brand img {
+    width: 200px;
+    height: 60px !important;
+}
+div#app {
+    margin-top: 40px;
 }
 @media (max-width: 480px) {
   ul.toolbar {

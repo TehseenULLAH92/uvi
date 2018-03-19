@@ -49,18 +49,18 @@
                 <tbody>
                   <?php foreach ($latest_reports as $key => $single_report): ?>
                     <tr>
-                      <td>{{$single_report->name}}</td>
+                      <td>{{$single_report->fname}}</td>
                       <td>{{$single_report->license}}</td>
                       <td>{{$single_report->severity}}</td>
                     </tr>
                   <?php endforeach; ?>
-                  <?php foreach ($latest_creports as $key => $single_report): ?>
+                  <!-- <?php foreach ($latest_creports as $key => $single_report): ?>
                     <tr>
-                      <td>{{$single_report->name}}</td>
-                      <td>{{$single_report->license}}</td>
-                      <td>{{$single_report->severity}}</td>
+                      <td><?php echo $single_report->name?></td>
+                      <td>Company Doesn't Have License</td>
+                      <td><?php echo $single_report->severity?></td>
                     </tr>
-                  <?php endforeach; ?>
+                  <?php endforeach; ?> -->
 
                 </tbody>
               </table>

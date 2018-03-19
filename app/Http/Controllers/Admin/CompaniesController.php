@@ -19,7 +19,7 @@ class CompaniesController extends Controller
   }
   public function company_profile($companies_id){
 
-    $data['drivers'] = DB::table('companies')->select('*')->join('drivers','drivers.company_id','=','companies.id')->where(['company_id' => $companies_id])->get();
+    $data['drivers'] = DB::table('companies')->select('*')->join('drivers','drivers.user_id','=','companies.id')->where(['user_id' => $companies_id])->get();
     $companies = Companies::find($companies_id);
     return view('admin.company.company_profile',$data,['companies'=>$companies]);
   }
