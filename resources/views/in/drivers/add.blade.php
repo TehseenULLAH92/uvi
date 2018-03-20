@@ -20,29 +20,41 @@
                       <div class="form-group">
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="fieldname" class="col-md-12 control-label">Name*</label>
+                            <label for="fieldname" class="col-md-12 control-label">First Name*</label>
                             <div class="col-md-12">
-                              <input id="fieldname" class="form-control" name="name" minlength="4" type="text" required>
+                              <input id="fieldname" class="form-control" name="fname" minlength="4" type="text" required>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="fieldname" class="col-md-12 control-label">License</label>
+                            <label for="fieldname" class="col-md-12 control-label">Last Name*</label>
+                            <div class="col-md-12">
+                              <input id="fieldname" class="form-control" name="lname" minlength="4" type="text" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="fieldname" class="col-md-12 control-label">Driver License</label>
                             <div class="col-md-12">
                               <input id="fieldname" class="form-control" name="license" minlength="4" type="text" required>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-4">
+                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="fieldname" class="col-md-12 control-label">Email*</label>
+                            <label for="fieldname" class="col-md-12 control-label">Company</label>
                             <div class="col-md-12">
-                              <input id="fieldname" class="form-control" name="email" type="text" required>
+                              <select class="form-control" name="company_id">
+                                <?php foreach ($companies as $key => $company): ?>
+                                  <option value="<?=$company->id?>"><?=$company->name?></option>
+                                <?php endforeach; ?>
+                              </select>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-md-4">
+                         </div>
+                      <!--  <div class="col-md-4">
                             <div class="form-group">
                               <label for="fieldname" class="col-md-12 control-label">Phone Number*</label>
                               <div class="col-md-12">
@@ -65,7 +77,7 @@
                                 <input id="fieldemail" class="form-control" type="text" name="joiningdate"  id="datepicker1" >
                               </div>
                             </div>
-                          </div>
+                          </div> -->
                       </div>
 
                     </div>

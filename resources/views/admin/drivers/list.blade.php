@@ -45,7 +45,6 @@
                         <td><?php
                           echo '<a href="' . url("admin/users/driver_visitors/".$driver->id) . '">Visitors</a> | <a href="' . url("admin/users/driver_reports/".$driver->id) . '">Reporters</a>';
                        ?></td>
-                      <td><?php //echo $driver->joiningdate?></td>
                       <td><!-- <a href="{{  url('admin/drivers/edit/'.$driver->id) }}">Edit</a>&nbsp;&nbsp;&nbsp; --><a href="{{  url('admin/reports/add_report/'.$driver->id) }}">Add Report</a><!-- &nbsp;&nbsp;&nbsp;<a onclick="return confirm('Are you sure you want to delete it?');" href="{{  url('admin/drivers/delete/'.$driver->id) }}">Delete</a> --></td>
                     </tr>
                   <?php endforeach; ?>

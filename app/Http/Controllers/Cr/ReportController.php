@@ -30,7 +30,7 @@ class ReportController extends Controller
     $inserted = DB::table('reports')->insert($data);
     if($inserted)
     {
-      return redirect('crcompanies/reports')->with('alert-success', 'Report Has Been Inserted Successfully');
+      return redirect('crcompanies/drivers')->with('alert-success', 'Report Has Been Inserted Successfully');
     }
     else
     {
@@ -68,7 +68,7 @@ class ReportController extends Controller
     if($inserted)
     {
       flash('Report Added Successfully')->success();
-      return redirect('crcompanies/reports');
+      return redirect('crcompanies/drivers');
     }
     else
     {

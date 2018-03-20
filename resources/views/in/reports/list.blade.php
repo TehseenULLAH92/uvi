@@ -35,7 +35,7 @@
                   <?php foreach ($reports as $key => $report): ?>
                     <tr class="odd gradeX">
                       <td><?=$report->title?></td>
-                      <td><?=$report->name?></td>
+                      <td><?=$report->fname?></td>
                       <td><?=$report->severity?></td>
                       <td><?=$report->issue?></td>
                       <td><?=$report->cost_involved?></td>

@@ -4,7 +4,7 @@
 <div id="page-content">
   <div id='wrap'>
     <div id="page-heading" class="page-bottom">
-      <h1>Driver Profile Of <strong>{{$driver->name}}</strong>   </h1>
+      <h1>Driver Profile Of <strong>{{$driver->fname}}</strong>   </h1>
 
     </div>
     <div class="container">
@@ -36,7 +36,7 @@
                               <!-- <input type="hidden" name="old_file" value="{{ Auth::user()->avatar }}">-->
                             </div>
                           </div>
-                          <h3>{{$driver->name}}</h3>
+                          <h3>{{$driver->fname}}</h3>
                         </div>
                       </div>
                     </div>

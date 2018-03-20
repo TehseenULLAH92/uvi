@@ -20,21 +20,41 @@
                       <div class="form-group">
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="fieldname" class="col-md-12 control-label">Name*</label>
+                            <label for="fieldname" class="col-md-12 control-label">First Name*</label>
                             <div class="col-md-12">
-                              <input id="fieldname" class="form-control" name="name" value="{{$driver->name}}" minlength="4" type="text" required>
+                              <input id="fieldname" class="form-control" name="fname" value="{{$driver->fname}}" minlength="4" type="text" required>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
-                            <label for="fieldname" class="col-md-12 control-label">License</label>
+                            <label for="fieldname" class="col-md-12 control-label">Last Name*</label>
+                            <div class="col-md-12">
+                              <input id="fieldname" class="form-control" value="{{$driver->lname}}" name="lname" minlength="4" type="text" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="fieldname" class="col-md-12 control-label">Driver License</label>
                             <div class="col-md-12">
                               <input id="fieldname" class="form-control" value="{{$driver->license}}" name="license" minlength="4" type="text" required>
                             </div>
                           </div>
                         </div>
                         <div class="col-md-4">
+                         <div class="form-group">
+                           <label for="fieldname" class="col-md-12 control-label">Company</label>
+                           <div class="col-md-12">
+                             <select class="form-control" name="company_id">
+                               <?php foreach ($companies as $key => $company): ?>
+                                 <option value="<?=$company->id?>"><?=$company->name?></option>
+                               <?php endforeach; ?>
+                             </select>
+                           </div>
+                         </div>
+                        </div>
+                        <!-- <div class="col-md-4">
                           <div class="form-group">
                             <label for="fieldname" class="col-md-12 control-label">Email*</label>
                             <div class="col-md-12">
@@ -65,7 +85,7 @@
                                 <input id="fieldemail" class="form-control" type="text" value="{{$driver->joiningdate}}" name="joiningdate"  id="datepicker1" >
                               </div>
                             </div>
-                          </div>
+                          </div>-->
                       </div>
 
                     </div>

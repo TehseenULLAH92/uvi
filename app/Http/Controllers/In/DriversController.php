@@ -4,7 +4,7 @@ namespace App\Http\Controllers\In;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB,App\Drivers;
+use Auth,DB,App\Drivers,App\Companies;
 class DriversController extends Controller
 {
   public function __construct()
@@ -17,12 +17,13 @@ class DriversController extends Controller
     return view('in.drivers.list',['drivers' =>$drivers]);
   }
   public function add_new_driver(Request $request){
-    $data['name']           = $request->input('name');
-    $data['license']        = $request->input('license');
-    $data['email']          = $request->input('email');
-    $data['phonenumber']    = $request->input('phonenumber');
-    $data['address']        = $request->input('address');
-    $data['joiningdate']    = date('Y-m-d',strtotime($request->input('joiningdate')));
+    $data['company_id']    = $request->input('company_id');
+    $data['fname']         = $request->input('fname');
+    $data['lname']         = $request->input('lname');
+    $data['license']       = $request->input('license');
+    $data['user_id']       = Auth::id();
+    $data['submitted_by']  = Auth::user()->name;
+    $data['report_amount'] = Auth::id();
 
     $inserted = DB::table('drivers')->insert($data);
     if($inserted)
@@ -37,20 +38,23 @@ class DriversController extends Controller
     }
   }
   public function add(){
-    return view('in.drivers.add');
+    $data['companies'] = Companies::All();
+    return view('in.drivers.add',$data);
   }
   public function edit($driver_id){
     $driver = Drivers::find($driver_id);
-    return view('in.drivers.edit',['driver' => $driver]);
+    $data['companies'] = Companies::All();
+
+    return view('in.drivers.edit',['driver' => $driver],$data);
   }
   public function update(Request $request,$driver_id){
     $driver = Drivers::find($driver_id);
-    $driver->name = $request->input('name');
+    $driver->company_id = $request->input('company_id');
+    $driver->fname = $request->input('fname');
+    $driver->lname = $request->input('lname');
     $driver->license = $request->input('license');
-    $driver->email = $request->input('email');
-    $driver->phonenumber = $request->input('phonenumber');
-    $driver->address = $request->input('address');
-    $driver->joiningdate = $request->input('joiningdate');
+    $driver->submitted_by = Auth::user()->name;
+    $driver->report_amount = Auth::id();
     if($driver->save())
     {
       flash('Driver Updated Successfully')->success();

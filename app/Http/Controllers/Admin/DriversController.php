@@ -19,6 +19,7 @@ class DriversController extends Controller
     return view('admin.drivers.list',['drivers' =>$drivers]);
   }
   public function add_new_driver(Request $request){
+    $data['company_id']    = $request->input('company_id');
     $data['fname']           = $request->input('fname');
     $data['lname']           = $request->input('lname');
     $data['license']        = $request->input('license');
@@ -41,7 +42,8 @@ class DriversController extends Controller
     }
   }
   public function add(){
-    return view('admin.drivers.add');
+    $data['companies'] = Companies::All();
+    return view('admin.drivers.add',$data);
   }
 
   public function add_company_driver($id) {
@@ -49,6 +51,7 @@ class DriversController extends Controller
       return view('admin.company.add_driver_to_company',['company'=>$company]);
   }
   public function add_driver_to_company(Request $request) {
+    $data['company_id']    = $request->input('company_id');
     $data['fname']        = $request->input('fname');
       $data['lname']        = $request->input('lname');
       $data['user_id']           = Auth::id();
@@ -73,10 +76,13 @@ class DriversController extends Controller
   }
   public function edit($driver_id){
     $driver = Drivers::find($driver_id);
-    return view('admin.drivers.edit',['driver' => $driver]);
+    $data['companies'] = Companies::All();
+    $data['companies'] = Companies::All();
+    return view('admin.drivers.edit',['driver' => $driver],$data);
   }
   public function update(Request $request,$driver_id){
     $driver = Drivers::find($driver_id);
+    $driver->company_id = $request->input('company_id');
     $driver->fname = $request->input('fname');
     $driver->lname = $request->input('lname');
     $driver->license = $request->input('license');

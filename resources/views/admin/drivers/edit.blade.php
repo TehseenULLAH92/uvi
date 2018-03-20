@@ -42,6 +42,18 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-md-4">
+                         <div class="form-group">
+                           <label for="fieldname" class="col-md-12 control-label">Company</label>
+                           <div class="col-md-12">
+                             <select class="form-control" name="company_id">
+                               <?php foreach ($companies as $key => $company): ?>
+                                 <option value="<?=$company->id?>"><?=$company->name?></option>
+                               <?php endforeach; ?>
+                             </select>
+                           </div>
+                         </div>
+                        </div>
                         <!-- <div class="col-md-4">
                           <div class="form-group">
                             <label for="fieldname" class="col-md-12 control-label">Email*</label>
